@@ -19,6 +19,8 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.widget.ShareButton;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
     LoginButton loginButton;
+    ShareButton shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentUrl(Uri.parse("https://developers.facebook.com"))
+                .setContentUrl(Uri.parse("https://1000logos.net/wp-content/uploads/2017/08/Marvel-Logo.png"))
                 .build();
+
+        shareButton=findViewById(R.id.share_button);
+        shareButton.setShareContent(content);
 
     }
 
