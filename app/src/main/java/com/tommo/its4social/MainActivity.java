@@ -3,6 +3,7 @@ package com.tommo.its4social;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
 
