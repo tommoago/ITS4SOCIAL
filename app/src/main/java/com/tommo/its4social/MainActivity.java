@@ -3,6 +3,7 @@ package com.tommo.its4social;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -30,25 +31,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         printHashKey(this);
-        callbackManager=CallbackManager.Factory.create();
-        loginButton=findViewById(R.id.login_button);
+        callbackManager = CallbackManager.Factory.create();
+        loginButton = findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
+                Log.d("asda", "onSuccess: successo");
             }
 
             @Override
             public void onCancel() {
-
+                Log.d("asda", "onCancel: cancellato");
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                Log.d("asda", "onError: errore");
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public static void printHashKey(Context pContext) {
